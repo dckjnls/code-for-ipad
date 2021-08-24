@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  code-server:
+    build: ./Docker
+    ports:
+      - '8080:8080'
+    volumes: 
+      - "$HOME/.config:/home/coder/.config"
+      - "$PWD:/home/coder/project"
+      # - "vscode-extensions:/home/coder/.local/share/code-server/extensions"
+    user: "$USER_ID:$USER_GROUP"
+    environment:
+      - DOCKER_USER=$USER
+
+volumes: 
+  vscode-extensions:
